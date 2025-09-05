@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="wrapper">
+                <h1>Multi-step Form</h1>
+                <form action="" id="form">
+                    <div class="stepper">
+                        <div class="step active">
+                            <div class="circle">1</div>
+                            <p>Personal Details</p>
+                        </div>
+                        <div class="step">
+                            <div class="circle">2</div>
+                            <p>Confirm Details</p>
+                        </div>
+                        <div class="step">
+                            <div class="circle">3</div>
+                            <p>Select Test</p>
+                        </div>
+                        <div class="step">
+                            <div class="circle">4</div>
+                            <p>Start Test</p>
+                        </div>
+                        <div class="step">
+                            <div class="circle">5</div>
+                            <p>Test</p>
+                        </div>
+                        <div class="step">
+                            <div class="circle">6</div>
+                            <p>Result</p>
+                        </div>
+                    </div>
+
+                    <div class="form-card" id="personalCard">
+                        <div class="row">
+                            <h2>Personal Information</h2>
+                            <div class="form-group">
+                                <label for="fname">First Name</label>
+                                <input type="text" id="fname" name="fname" required>
+                                <span class="error-msg"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lname">Last Name</label>
+                                <input type="text" id="lname" name="lname" required>
+                                <span class="error-msg"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                                <span class="error-msg"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date" id="dob" name="dob" required>
+                                <span class="error-msg"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="PRN">PRN Number</label>
+                                <input type="number" id="PRN" name="PRN" required maxlength="6">
+                                <span class="error-msg"></span>
+                            </div>
+                            <div class="buttons">
+                                <button class="btn nextBtn" disabled>Next</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Confirm Details Step -->
+                    <div class="form-card" id="confirmCard">
+                        <div class="row">
+                            <h2>Confirm Details</h2>
+                            <p><strong>Full Name:</strong> <span id="c_fullname"></span></p>
+                            <p><strong>Date of Birth:</strong> <span id="c_dob"></span></p>
+                            <p><strong>PRN:</strong> <span id="c_PRN"></span></p>
+
+                            <div class="buttons">
+                                <button class="btn prevBtn">Previous</button>
+                                <button class="btn nextBtn" id="confirmNextBtn">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-card" id="selectTestCard">
+                        <div class="row">
+                            <h2>Select Test</h2>
+                            <div class="radio-group">
+                                <input type="radio" id="test1" name="test" value="test1">
+                                <label for="test1">DSA</label>
+                            </div>
+                            <div class="radio-group">
+                                <input type="radio" id="test2" name="test" value="test2">
+                                <label for="test2">BI</label>
+                            </div>
+                            <div class="radio-group">
+                                <input type="radio" id="test3" name="test" value="test3">
+                                <label for="test3">AI/ML</label>
+                            </div>
+                            <div class="buttons">
+                                <button class="btn prevBtn">Previous</button>
+                                <button class="btn nextBtn" disabled>Next</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- step 4: Instructions -->
+                    <div class="form-card" id="instructionCard">
+                        <div class="row">
+                            <h2>Test Instructions</h2>
+                            <p class="subtitle">Please read the following instructions carefully before starting your
+                                test</p>
+                            <ul class="instruction-list">
+                                <li>This test contains 8 multiple-choice questions</li>
+                                <li>Each question has 4 options, select the most appropriate answer</li>
+                                <li>You have 15 minutes to complete the test</li>
+                                <li>Once you select an answer, you cannot change it</li>
+                                <li>You must answer all questions to submit the test</li>
+                                <li>Do not use any external resources or materials during the test</li>
+                                <li>Ensure you have a stable internet connection</li>
+                                <li>Click 'Start Test' when you are ready to begin</li>
+                            </ul>
+                            <div class="buttons">
+                                <button class="btn prevBtn">Previous</button>
+                                <button class="btn nextBtn" id="startTest">Start Test</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- step5: Test -->
+                    <div class="form-card" id="testCard">
+                        <div class="row">
+                            <h2>Test</h2>
+                            <span class="timer">
+                                <span id="counter"></span>
+                            </span>
+                            <p id="question"></p>
+                            <ul class="options-list">
+                                <li><label><input type="radio" name="option" class="option"> <span></span></label></li>
+                                <li><label><input type="radio" name="option" class="option"> <span></span></label></li>
+                                <li><label><input type="radio" name="option" class="option"> <span></span></label></li>
+                                <li><label><input type="radio" name="option" class="option"> <span></span></label></li>
+                            </ul>
+                            <div class="checkbox-grp">
+                                <input type="checkbox" id="markForSubmit">
+                                <label for="markForSubmit">Do you want to sumit the Test</label>
+                            </div>
+                            <div class="buttons">
+                                <button class="btn prevBtn">Previous</button>
+                                <button class="btn nextBtn">Next</button>
+                                <button class="btn" id="submitBtn">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- step6: Result -->
+                    <div class="form-card" id="result">
+                        <div class="row">
+                            <h2>Result</h2>
+                            <p>Quiz Completed &#127881;</p>
+                            <div id="marks-container" style="width: 300px; height: 400px; margin: 0 auto"></div>
+                            <div class="testSolution-wrap">
+                                <div class="testSolution" id="testSolutions"></div>
+
+                            </div>
+                        </div>
+                        <div class="failedRow">
+                            <h2>TimeOut</h2>
+                            <button class="btn" id="reStartBtn">Restart</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <!-- <script src="./assets/js/script.js"></script> -->
+    <script src="./assets/js/formValidation.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+{
+  "tests": {
+    "test1": {
+      "name": "DSA (Data Structures & Algorithms)",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the time complexity of inserting an element at the beginning of an array?",
+          "options": [
+            "O(1)",
+            "O(n)",
+            "O(log n)",
+            "O(n²)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Inserting at the beginning requires shifting all existing elements, making it O(n)."
+        },
+        {
+          "id": 2,
+          "question": "Which data structure follows the Last In First Out (LIFO) principle?",
+          "options": [
+            "Queue",
+            "Stack",
+            "Array",
+            "Linked List"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Stack follows LIFO principle where the last element added is the first one to be removed."
+        },
+        {
+          "id": 3,
+          "question": "What is the worst-case time complexity of Quick Sort?",
+          "options": [
+            "O(n log n)",
+            "O(n)",
+            "O(n²)",
+            "O(log n)"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Quick Sort has O(n²) worst-case complexity when the pivot is always the smallest or largest element."
+        },
+        {
+          "id": 4,
+          "question": "In a binary search tree, what is the time complexity of searching for an element in the average case?",
+          "options": [
+            "O(n)",
+            "O(1)",
+            "O(log n)",
+            "O(n log n)"
+          ],
+          "correctAnswer": 2,
+          "explanation": "In a balanced BST, search operation takes O(log n) time in average case."
+        },
+        {
+          "id": 5,
+          "question": "Which algorithm is used to find the shortest path between all pairs of vertices?",
+          "options": [
+            "Dijkstra's Algorithm",
+            "Bellman-Ford Algorithm",
+            "Floyd-Warshall Algorithm",
+            "Kruskal's Algorithm"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Floyd-Warshall algorithm finds shortest paths between all pairs of vertices."
+        }
+      ]
+    },
+    "test2": {
+      "name": "BI (Business Intelligence)",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the primary purpose of a data warehouse?",
+          "options": [
+            "Real-time transaction processing",
+            "Data storage for analytical processing",
+            "Data backup and recovery",
+            "Data encryption"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Data warehouse is designed for analytical processing and business intelligence activities."
+        },
+        {
+          "id": 2,
+          "question": "Which of the following is NOT a characteristic of OLAP systems?",
+          "options": [
+            "Fast query performance",
+            "Complex analytical queries",
+            "High transaction volume",
+            "Multidimensional data analysis"
+          ],
+          "correctAnswer": 2,
+          "explanation": "OLAP systems are optimized for analytical queries, not high-volume transactions (which is OLTP)."
+        },
+        {
+          "id": 3,
+          "question": "What does ETL stand for in data warehousing?",
+          "options": [
+            "Export, Transform, Load",
+            "Extract, Transfer, Load",
+            "Extract, Transform, Load",
+            "Export, Transfer, Link"
+          ],
+          "correctAnswer": 2,
+          "explanation": "ETL stands for Extract, Transform, Load - the process of moving data from source to destination."
+        },
+        {
+          "id": 4,
+          "question": "Which type of dimension changes over time and maintains historical data?",
+          "options": [
+            "Type 0 SCD",
+            "Type 1 SCD",
+            "Type 2 SCD",
+            "Type 3 SCD"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Type 2 Slowly Changing Dimension maintains complete historical data by creating new records."
+        }
+      ]
+    },
+    "test3": {
+      "name": "AI/ML (Artificial Intelligence & Machine Learning)",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which type of machine learning algorithm learns from labeled training data?",
+          "options": [
+            "Unsupervised Learning",
+            "Supervised Learning",
+            "Reinforcement Learning",
+            "Deep Learning"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Supervised learning uses labeled training data to learn the mapping from input to output."
+        },
+        {
+          "id": 2,
+          "question": "What is the primary goal of k-means clustering?",
+          "options": [
+            "Classification of data",
+            "Regression analysis",
+            "Grouping similar data points",
+            "Feature selection"
+          ],
+          "correctAnswer": 2,
+          "explanation": "K-means clustering groups data points into k clusters based on similarity."
+        },
+        {
+          "id": 3,
+          "question": "Which activation function is commonly used in hidden layers of neural networks?",
+          "options": [
+            "Sigmoid",
+            "Linear",
+            "ReLU",
+            "Step function"
+          ],
+          "correctAnswer": 2,
+          "explanation": "ReLU (Rectified Linear Unit) is widely used in hidden layers due to its computational efficiency and ability to mitigate vanishing gradient problem."
+        },
+        {
+          "id": 4,
+          "question": "What does overfitting mean in machine learning?",
+          "options": [
+            "Model performs well on both training and test data",
+            "Model performs poorly on training data",
+            "Model performs well on training but poorly on test data",
+            "Model cannot be trained"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Overfitting occurs when a model learns the training data too well, including noise, leading to poor generalization."
+        },
+        {
+          "id": 5,
+          "question": "Which algorithm is used for dimensionality reduction?",
+          "options": [
+            "K-Nearest Neighbors",
+            "Principal Component Analysis (PCA)",
+            "Naive Bayes",
+            "Support Vector Machine"
+          ],
+          "correctAnswer": 1,
+          "explanation": "PCA is a popular technique for reducing the number of dimensions while preserving important information."
+        }
+      ]
+    }
+  }
+}

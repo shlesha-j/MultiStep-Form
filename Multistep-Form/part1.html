@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="wrapper">
+                <h1>Multi-step Form</h1>
+                <form action="">
+                    <div class="stepper">
+                        <div class="step active">
+                            <div class="circle">1</div>
+                            <p>Personal Details</p>
+                        </div>
+                        <div class="step">
+                            <div class="circle">2</div>
+                            <p>Confirm Details</p>
+                        </div>
+                        <div class="step">
+                            <div class="circle">3</div>
+                            <p>Select Test</p>
+                        </div>
+                        <div class="step">
+                            <div class="circle">4</div>
+                            <p>Start Test</p>
+                        </div>
+                        <div class="step">
+                            <div class="circle">5</div>
+                            <p>Test</p>
+                        </div>
+                        <div class="step">
+                            <div class="circle">6</div>
+                            <p>Result</p>
+                        </div>
+                    </div>
+
+                    <div class="form-card" id="personalCard">
+                        <div class="row">
+                            <h2>Personal Information</h2>
+                            <div class="form-group">
+                                <label for="fname">First Name:</label>
+                                <input type="text" id="fname" name="fname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lname">Last Name:</label>
+                                <input type="text" id="lname" name="lname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth:</label>
+                                <input type="date" id="dob" name="dob" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="PRN">PRN Number:</label>
+                                <input type="number" id="PRN" name="PRN" required>
+                            </div>
+                            <div class="buttons">
+                                <button class="btn nextBtn" id="nextBtn" disabled>Next</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Confirm Details Step -->
+                    <div class="form-card" id="confirmCard" style="display:none;">
+                        <div class="row">
+                            <h2>Confirm Details</h2>
+                            <p><strong>First Name:</strong> <span id="c_fname"></span></p>
+                            <p><strong>Last Name:</strong> <span id="c_lname"></span></p>
+                            <p><strong>Date of Birth:</strong> <span id="c_dob"></span></p>
+                            <p><strong>PRN:</strong> <span id="c_PRN"></span></p>
+
+                            <div class="buttons">
+                                <button class="btn" id="prevBtn">Previous</button>
+                                <button class="btn" id="confirmNextBtn">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-card" id="selectTestCard">
+
+                    </div>
+                    <!-- <div class="buttons">
+                        <button class="btn" id="prevBtn">Previous</button>
+                        <button class="btn" id="nextBtn">Next</button>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const steps = document.querySelectorAll(".step");
+            const personalCard = document.getElementById("personalCard");
+            const confirmCard = document.getElementById("confirmCard");
+
+            const inputs = document.querySelectorAll("#personalCard input");
+            const nextBtn = document.getElementById("nextBtn");
+            const prevBtn = document.getElementById("prevBtn");
+            const confirmNextBtn = document.getElementById("confirmNextBtn");
+
+            let currentStep = 0;
+
+            // Stepper update
+            function updateSteps() {
+                steps.forEach((step, index) => {
+                    step.classList.remove("active", "completed");
+                    if (index < currentStep) step.classList.add("completed");
+                    if (index === currentStep) step.classList.add("active");
+                });
+            }
+
+            // Enable next button only when all inputs filled
+            inputs.forEach(input => {
+                input.addEventListener("input", () => {
+                    const allFilled = Array.from(inputs).every(i => i.value.trim() !== "");
+                    nextBtn.disabled = !allFilled;
+                });
+            });
+
+            // Next from Personal -> Confirm
+            nextBtn.addEventListener("click", (event) => {
+                event.preventDefault();
+
+                // Save to localStorage
+                const formData = {};
+                inputs.forEach(i => formData[i.name] = i.value);
+                localStorage.setItem("formData", JSON.stringify(formData));
+
+                // Show confirm card
+                personalCard.style.display = "none";
+                confirmCard.style.display = "block";
+
+                // Fill confirmation text
+                document.getElementById("c_fname").textContent = formData.fname;
+                document.getElementById("c_lname").textContent = formData.lname;
+                document.getElementById("c_dob").textContent = formData.dob;
+                document.getElementById("c_PRN").textContent = formData.PRN;
+
+                currentStep++;
+                updateSteps();
+            });
+
+            // Prev from Confirm -> Personal
+            prevBtn.addEventListener("click", (event) => {
+                event.preventDefault();
+                confirmCard.style.display = "none";
+                personalCard.style.display = "block";
+                currentStep--;
+                updateSteps();
+            });
+
+            // Next from Confirm -> (future step)
+            confirmNextBtn.addEventListener("click", (event) => {
+                event.preventDefault();
+                alert("Proceed to Step 3 (Select Test)...");
+                currentStep++;
+                updateSteps();
+            });
+        });
+
+    </script>
+</body>
+
+</html>

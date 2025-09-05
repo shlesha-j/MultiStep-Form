@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Score Speedometer</title>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+</head>
+<body style="background:#111; color:white;">
+
+  <div id="container" style="width: 500px; height: 400px; margin: 0 auto"></div>
+
+  <script>
+    // Example test data
+    const formData = {
+      testResults: [
+        { isCorrect: true },
+        { isCorrect: false },
+        { isCorrect: true },
+        { isCorrect: true }
+      ]
+    };
+    const questions = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]; // total 10 questions
+
+    // Calculate score
+    const score = formData.testResults.filter(r => r.isCorrect).length * 10;
+    const maxScore = questions.length * 10;
+
+    Highcharts.chart('container', {
+      chart: {
+        type: 'gauge',
+        backgroundColor: '#fff',
+      },
+      title: {
+        text: 'Your Score Speedometer',
+        style: { color: '#000' }
+      },
+      pane: {
+        startAngle: -90,
+        endAngle: 90,
+        background: [{
+          backgroundColor: '#fff',
+          borderWidth: 0,
+          outerRadius: '50%'
+        }]
+      },
+      yAxis: {
+        min: 0,
+        max: maxScore,
+        tickInterval: 10,
+        lineColor: '#000',
+        labels: {
+          style: { color: '#000' }
+        },
+        plotBands: [{
+          from: 0,
+          to: maxScore * 0.2,
+          color: '#55BF3B' // green
+        }, {
+          from: maxScore * 0.2,
+          to: maxScore * 0.75,
+          color: '#DDDF0D' // yellow
+        }, {
+          from: maxScore * 0.75,
+          to: maxScore,
+          color: '#DF5353' // red
+        }]
+      },
+      series: [{
+        name: 'Score',
+        data: [score],
+        tooltip: {
+          valueSuffix: ' points'
+        },
+        dataLabels: {
+          format: '<div style="text-align:center"><span style="font-size:20px;color:#000">{y} / ' + maxScore + '</span><br/><span style="font-size:14px;color: #000">Points</span></div>'
+        }
+      }]
+    });
+  </script>
+</body>
+</html>
