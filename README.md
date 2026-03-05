@@ -1,6 +1,6 @@
 # 🎯 Online Quiz Application
 
-🔗 Live Demo: https://fastidious-malasada-a026e9.netlify.app/
+🔗 Live Demo: https://jade-gelato-93172f.netlify.app/
 
 A multi-step **Quiz Application** built using HTML, CSS, and JavaScript.  
 The app includes a timer-based quiz system and visual result representation using Highcharts.
